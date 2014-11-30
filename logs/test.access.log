@@ -1,0 +1,3 @@
+2014-11-30T18:33:50.153Z - info: HTTP GET /1/status url=/1/status, user-agent=curl/7.35.0, host=localhost:5000, accept=*/*, method=GET, httpVersion=1.1, originalUrl=/1/status, , body=undefined, statusCode=200, responseTime=6
+2014-11-30T18:37:38.042Z - info: HTTP GET /1/status url=/1/status, user-agent=curl/7.35.0, host=localhost:5000, accept=*/*, method=GET, httpVersion=1.1, originalUrl=/1/status, , body=undefined, statusCode=500, responseTime=14
+2014-11-30T18:38:22.895Z - info: HTTP GET /1/status url=/1/status, user-agent=curl/7.35.0, host=localhost:5000, accept=*/*, method=GET, httpVersion=1.1, originalUrl=/1/status, , body=undefined, statusCode=200, responseTime=10
