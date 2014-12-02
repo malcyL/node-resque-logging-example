@@ -1,4 +1,4 @@
-var AppLogger = require('../lib/logger').ApplicationLogger;
+var AppLogger = require('../lib/logger').BackgroundLogger;
 var storeRequestUid = require('../lib/logger').StoreRequestUid;
 var clearRequestUid = require('../lib/logger').ClearRequestUid;
 

@@ -1,4 +1,4 @@
-var AppLogger = require('../lib/logger').BackgroundLogger,
+var AppLogger = require('../lib/logger').ApplicationLogger,
     Resque = require("node-resque"),
     ShortId = require('shortid'),
     config = require('../config');
