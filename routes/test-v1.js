@@ -1,5 +1,6 @@
 var AppLogger = require('../lib/logger').ApplicationLogger;
-var storeRequestUid = require('../lib/logger').SroreRequestUid;
+var storeRequestUid = require('../lib/logger').StoreRequestUid;
+var getRequestUid = require('../lib/logger').GetRequestUid;
 
 /**
  * Define routes for test v1
@@ -24,6 +25,19 @@ module.exports = function (app) {
             AppLogger.info('Starting to do something....');
             AppLogger.info('  something 1....');
             AppLogger.info('  something 2....');
+
+            var TestJobQueuer = require('../models/TestJobQueuer.js');
+            var jobQueuer = new TestJobQueuer();
+            AppLogger.debug('Queuing job. Passing logging id: ' + getRequestUid());
+            jobQueuer.queueJob(getRequestUid(), 'test', function(err, jobId){
+                AppLogger.debug('Job Queued, id: ' + jobId);
+                if(err){
+                    res.status(500).end();
+                } else{
+                    res.status(200).end();
+                }
+            });
+
             setTimeout(doSomethingLater,2000);
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({ status: 'Started' }));           

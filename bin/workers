@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+var debug = require('debug')('test-workers');
+require('../test-worker');
