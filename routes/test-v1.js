@@ -28,9 +28,9 @@ module.exports = function (app) {
 
             var TestJobQueuer = require('../models/TestJobQueuer.js');
             var jobQueuer = new TestJobQueuer();
-            AppLogger.debug('Queuing job. Passing logging id: ' + getRequestUid());
+            AppLogger.info('Queuing job. Passing logging id: ' + getRequestUid());
             jobQueuer.queueJob(getRequestUid(), 'test', function(err, jobId){
-                AppLogger.debug('Job Queued, id: ' + jobId);
+                AppLogger.info('Job Queued, id: ' + jobId);
                 if(err){
                     res.status(500).end();
                 } else{

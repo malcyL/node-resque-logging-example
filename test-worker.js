@@ -6,9 +6,9 @@ var config = require('./config'),
     jobs = {
         "test":{
             perform: function(jobData, done){
-                AppLogger.debug("[WORKER " + id + " Starting test job: " + jobData.id+"]");
+                AppLogger.info("[WORKER " + id + " Starting test job: " + jobData.id+"]");
                 TestProcessor.process(jobData, function(){
-                    AppLogger.debug("[WORKER " + id + " Completed test job: " + jobData.id+"]");
+                    AppLogger.info("[WORKER " + id + " Completed test job: " + jobData.id+"]");
                     done(null);
                 });
             }
@@ -36,12 +36,12 @@ var worker = new Resque.worker({connection: config.resque.connectionDetails,  qu
 
 
 worker.on('poll', function (queue) { // jshint ignore:line
-    AppLogger.debug("[WORKER "+id+" Polling...]");
+    AppLogger.info("[WORKER "+id+" Polling...]");
 });
 
 // Triggered before a Job is attempted.
 worker.on('job', function (queue, job) {
-    AppLogger.debug("[WORKER "+id+" Picking up job: " + JSON.stringify(job));
+    AppLogger.info("[WORKER "+id+" Picking up job: " + JSON.stringify(job));
 });
 
 // Triggered every time a Job errors.
@@ -52,8 +52,8 @@ worker.on('error', function (queue, job, error) {
 
 // Triggered on every successful Job run.
 worker.on('success', function (queue, job, result) { // jshint ignore:line
-    AppLogger.debug("[WORKER "+id+" Success!]");
-    //    AppLogger.debug("[WORKER "+id+"] Success: "+JSON.stringify(result)+" with job: "+JSON.stringify(job));
+    AppLogger.info("[WORKER "+id+" Success!]");
+    //    AppLogger.info("[WORKER "+id+"] Success: "+JSON.stringify(result)+" with job: "+JSON.stringify(job));
 });
 
 // On a SIGTERM event

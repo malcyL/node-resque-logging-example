@@ -6,7 +6,7 @@ var AppLogger = require('../lib/logger').BackgroundLogger,
 var TestJobQueuer = function(){};
 
 TestJobQueuer.prototype.queueJob = function(requestId, jobType, callback){
-    AppLogger.debug("Attempting to queue job.");
+    AppLogger.info("Attempting to queue job.");
 
     var queue = new Resque.queue({connection: config.resque.connectionDetails}, function(){
 
@@ -16,7 +16,7 @@ TestJobQueuer.prototype.queueJob = function(requestId, jobType, callback){
         };
 
         queue.enqueue('TestJobQueue', jobType, jobData, function(err){
-            AppLogger.debug("Job Queued - type: " + jobType + " - id:" + jobData.id);
+            AppLogger.info("Job Queued - type: " + jobType + " - id:" + jobData.id);
             if(err) {
                 callback(err, jobData.id);
             }

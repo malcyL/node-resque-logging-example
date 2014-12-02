@@ -6,8 +6,8 @@ var ProcessTest = {};
 
 ProcessTest.process = function(jobData, callback){
     storeRequestUid(jobData.requestId);
-    AppLogger.debug('ProcessTest - Starting Processing');
-    AppLogger.debug('Finished processing');
+    AppLogger.info('ProcessTest - Starting Processing');
+    AppLogger.info('Finished processing');
     clearRequestUid();
     callback(null);
 };
