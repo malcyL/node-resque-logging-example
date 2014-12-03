@@ -1,5 +1,4 @@
 var AppLogger = require('../lib/logger').ApplicationLogger;
-var storeRequestUid = require('../lib/logger').StoreRequestUid;
 var getRequestUid = require('../lib/logger').GetRequestUid;
 
 /**
@@ -13,7 +12,6 @@ module.exports = function (app) {
      */
     app.route('/1/status')
         .get(function(req, res){
-            storeRequestUid(req.headers['x-talis-request-id']);
             AppLogger.info('Returning status: alive');
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({ status: 'alive' }));        	
@@ -21,7 +19,6 @@ module.exports = function (app) {
 
     app.route('/1/doSomething')
         .get(function(req, res){
-            storeRequestUid(req.headers['x-talis-request-id']);
             AppLogger.info('Starting to do something....');
             AppLogger.info('  something 1....');
             AppLogger.info('  something 2....');

@@ -1,3 +1,5 @@
+var storeRequestUid = require('./lib/logger').StoreRequestUid;
+
 var express = require('express'),
     path = require('path'),
     AccessLogger = require('./lib/logger').AccessLogger,
@@ -23,6 +25,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req, res, next) {
+    storeRequestUid(req.headers['x-talis-request-id']);
+    next();
+});
 
 // Define routes
 require('./routes/index.js')(app);
