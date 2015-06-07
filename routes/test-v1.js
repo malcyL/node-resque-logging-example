@@ -42,13 +42,7 @@ module.exports = function (app) {
 };
 
 function doSomethingLater() {
-    if (Math.floor((Math.random() * 10) + 1) < 9) {
-        AppLogger.info('  something 3....');
-        AppLogger.info('  something 4....');
-        AppLogger.info('Finished doing something.');
-    }
-    else
-    {
-        AppLogger.info('Bang!');
-    } 
+    AppLogger.info('  something 3....');
+    AppLogger.info('  something 4....');
+    AppLogger.info('Finished doing something.');
 }
